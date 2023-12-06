@@ -1,0 +1,413 @@
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,
+:active {
+	outline: none;
+}
+a:focus,
+a:active {
+	outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+	display: block;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;	
+}
+input,
+button,
+textarea {
+	font-family: inherit;
+}
+
+input::-ms-clear {
+	display: none;
+}
+button {
+	cursor: pointer;
+}
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0;
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+/* ul li {
+	list-style: none;
+} */
+img {
+	vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: 400;
+}
+
+/*--------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2? Family= Playfair+Display:wght@400;500 & display=swap');
+
+
+body{
+	background: url('../img/imagee.jpg') no-repeat center center fixed;
+	background-size: cover; 
+    font-family: Arial, sans-serif;        	
+    line-height: 1;   
+    color: #333333;
+
+}
+
+.wrapper{
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --------------- */
+
+.page{
+	flex: 1 1 auto;
+}
+
+[class*="__container"]{
+    max-width: 1170px;
+    margin: 0 auto;       
+}
+
+@media (max-width:1199.98px){
+	[class*="__container"] {
+		max-width: 970px;
+	}
+}
+@media (max-width:990.98px){
+	[class*="__container"] {
+		max-width: 750px;
+	}
+}
+@media (max-width:767.98px){
+	[class*="__container"] {
+		max-width: none;
+		padding: 0 15px;
+	}
+}
+/* ------------header---------------- */
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 50;
+}
+.header__container {
+	min-height: 103px;
+	padding-top: 10px;
+	display: flex;
+	column-gap: 10px;
+	row-gap: 15px;
+	align-items: center;
+	justify-content: space-between;
+	padding-bottom: 10px;
+}
+
+button {	
+    background-color: #ffb039;
+    color: #fff;
+    border: 5px solid #ccc;
+	border-radius: 15px;
+    padding: 11px 30px;	
+    cursor: pointer;
+	font-size: 18px;
+	letter-spacing: 5px;
+	transition: all 0.5s;
+   }
+
+button:hover{
+	background-color: rgba(240, 58, 58, 0.926);
+	color: #000;
+   }
+
+/* Стилі для випливаючого блоку */
+.contact-popup {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+	border-radius: 10px;
+    padding: 10px;
+    z-index: 1;
+    width: 400px;
+    text-align: left;	
+	margin-left: -217px;
+ }
+
+.logo__img{
+	width: 60px;
+	height: 60px;
+	border-radius: 70px;
+	margin-right: 20px;
+}
+.header__logo {	
+	display: flex;
+	font-weight: 800;
+	font-size: 24px;
+	color: inherit;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.header__menu {}
+/* ================================ */
+.menu {}
+.menu__list {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 46px;
+	row-gap: 15px;	
+}
+
+.menu__item {}
+.menu__link {
+	font-size: 18px;
+	font-weight: 700;
+	color: inherit;		
+}
+
+
+@media (max-width: 999.98px){
+	.contact-popup {    
+    width: 380px;    	
+	margin-left: -200px;
+ }
+}
+@media (max-width: 767.98px) {
+	.header__container {
+		min-height: 0;
+		flex-direction: column;
+	}
+	.menu__list {
+		justify-content: center;
+	}
+	.contact-popup {    
+    width: 400px;    	
+	margin-left: -120px;	
+ }
+	.menu__link {
+		font-size: 18px;		
+	}
+}
+
+@media (max-width: 420.98px){
+	.menu__link {
+	font-size: 12px;
+	font-weight: 700;
+	color: inherit;	
+	padding: 1px 0;	
+}
+	.contact-popup {    
+    width: 290px;    	
+	margin-left: -65px;	
+}}
+/* -----------header-------------- */
+
+.products-container {
+	padding: 200px 0 50px 0; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product {
+    width: 450px;
+    margin: 20px;
+    padding: 10px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.main-title {
+    color: #333;
+	font-weight: 500;
+	font-size: 20px;
+	height: 45px;
+	padding: 5px 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 30px;
+}
+.product-detalis {
+    max-height: 145px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+ }
+
+p,h4 { 
+	line-height: 22px;
+	font-size: 18px;
+	font-weight: 400;
+    color: #666;
+	padding: 11px 5px;	
+	text-align: left;
+	letter-spacing: 1px;
+	width: 100%;
+    max-width: 600px; /* Налаштуйте максимальну ширину за вашим вибором */
+    margin: 0 auto; /* Вирівнює текст по центру */
+}
+
+ul,li{
+	line-height: 20px;
+	font-size: 18px;
+	font-weight: 400;
+    color: #666;
+	padding: 5px 0px;	
+	margin-left: 12px;
+	text-align: left;
+}
+
+.button-details{
+	position: relative;
+   	display: block;
+    margin: 15px 0px 35px 210px;
+    padding: 8px 45px 8px 5px;
+    background-color: #010f94;
+    color: #fff;    
+    border-radius: 5px solid#ccc;
+    cursor: pointer;		
+}
+
+.button-details:hover{
+	background-color: rgb(172, 172, 172);
+}
+.icon {
+    position: absolute; /* Забезпечує абсолютне позиціювання відносно батьківського елемента */
+    left:80%; /* Опціональне вирівнювання іконки відносно лівого краю кнопки */
+    top: 50%; /* Опціональне вирівнювання іконки по вертикалі по центру кнопки */
+    transform: translateY(-50%); /* Коригує положення по вертикалі, якщо використовується top: 50% */
+    width: 20px; /* Розмір іконки */
+    height: 20px; /* Розмір іконки */
+    background-image: url(../img/icon/icons8-стрелки-по-кругу.gif); /* Замініть your-icon.png на шлях до вашої іконки */
+    background-size: cover; /* Адаптація розміру іконки */
+    display: inline-block; /* Робимо іконку блочним елементом, щоб мати можливість задавати розміри */
+    margin-right: 5px; /* Опціональний відступ між іконкою та текстом кнопки */
+	border-radius: 50%;
+}
+
+.button-clik{
+	 background-color: #ffb039;
+    color: #fff;
+    border: 5px solid #ccc;
+	border-radius: 15px;
+    padding: 11px 30px;
+	width: 100%;
+    cursor: pointer;
+	font-size: 18px;
+	letter-spacing: 5px;
+	transition: all 0.5s;
+   }
+.button-clik:hover{
+	background-color: rgba(240, 58, 58, 0.926);
+	color: #000;
+   }
+
+@media (max-width: 767.98px){
+	.products-container {
+	padding: 310px 0 20px 0; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.product {   
+    margin: 15px 0px;
+    padding: 10px 0px 60px 0px;    
+}
+}
+
+@media (max-width: 600px) {
+    .product {
+        width: 100%;
+    }
+	.button-details{	
+	display: flex;
+	justify-content: right;
+	margin-left: auto;
+    /* margin: 15px 0px 35px 300px; */
+    padding: 8px 45px 8px 5px;
+   	
+}
+}
+
+/* --------------------------------footer------------------------------- */
+.footer {
+	padding: 15px 0;
+	background-color: rgba(192, 192, 192, 0.926);
+	color: rgb(65, 64, 64);
+	font-size: 20px;	
+	text-align: center;
+
+}
+.footer__content {
+	display: flex;
+	justify-content: space-between;
+	padding: 0px 25px;
+}
+
+@media (max-width: 767.98px) {
+	.footer{
+	padding: 10px 5px;	
+	font-size: 20px;
+	}
+	.footer__content {
+	display: flex;
+	justify-content: space-between;
+	padding: 0px 5px;
+}
+}
+/* --------------------------------footer------------------------------- */
+
+label,input{   
+	padding: 20px 0;
+	margin-bottom: 45px;
+	font-size: 18px;
+	border-radius: 10px;
+	 color: #666;
+}
+
+label{
+	font-size: 22px;
+}

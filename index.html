@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин низьких цін та якісних товарів</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="my-telegram-server/">
+    <link rel="shortcut icon" href="img/logo.ico">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <a href="#" class="header__logo"><img class="logo__img" src="img/logo.jpg" alt="logo">Магазин низьких
+                    цін та якісних товарів</a>
+                <nav class="header__menu menu">
+                    <!-- Кнопка "Контакти" -->
+                    <ul class="menu__list">
+                        <li class="menu__item">
+                            <button onclick="showContactPopup()">Контакти</button>
+                            <!-- Випливаючий блок для контактів -->
+                            <div id="contactPopup" class="contact-popup">
+                                <p class="menu__link">Номер телефону: <a href="tel:+380509007920">+380 50 900 79 20</a>
+                                </p>
+                                <p class="menu__link">Електронна пошта: <a
+                                        href="mailto:mayor4ik89@ukr.net">mayor4ik89@ukr.net</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <page class="page">
+            <section class="main-block">
+                <div class="main-block__container">
+                    <!---------------------------------------------------------- 1 --------------------------------------------------------->
+                    <div class="products-container">
+                        <div class="product">
+                            <h2 class="main-title">Ліхтар з функцією Power Bank акумуляторний usb.</h2>
+                            <img src="img/main-block/01.jpg" alt="Фото товару 1">
+                            <div class="product-detalis product-details-1">
+                                <p>Переносний світлодіодний ліхтар відмінно підійде для дому, відпочинку на природі,
+                                    ремонту
+                                    авто у темний час доби та є
+                                    портативним зарядним пристроєм з акумулятором на сонячній панелі.
+                                    Ліхтар оснащений потужними LED світлодіодами та 4-ма режимами освітлення, включаючи
+                                    "аварійний" червоно-синій.
+                                    Ліхтар можна заряджати від мережі 220V або сонячної панелі. Через вбудований
+                                    USB-порт
+                                    можна заряджати телефони та
+                                    планшети (Функція Power Bank)</p>
+                                <p>4 режими освітлення!</p>
+                                <p>Ліхтар має 4 різних режими освітлення:</p>
+                                <ul>
+                                    <li>Прямий: потужно висвітлює на дальній відстані.</li>
+                                    <li>Прямий великий: дозволяє висвітлити як прямо, так і навколо по всій ширині.</li>
+                                    <li>Великий: режим освітлення широкого простору, великої кімнати або вечірні
+                                        посиденьки біля
+                                        намету.</li>
+                                    <li>Аварійний, SOS: моргаюче червоно-синє світло.</li>
+                                </ul>
+
+                                <p>Виробник: ТУРЕЧЧИНА</p>
+                            </div>
+                            <!-- product-details -->
+
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+                            </script>
+                            <!-- product-details -->
+
+
+                            <!-- Telegram -->
+
+                            <!-- Добавленная графа для ввода номера телефона -->
+                            <button class="button-details" onclick="toggleDetails(1)"><i
+                                    class="icon"></i>Детальніше</button>
+                            <label for="phone1">Ваш номер телефона:</label>
+                            <input type="tel" id="phone1" name="phone1" placeholder="Введіть номер телефона">
+
+                            <!-- Добавленный скрипт для заказа с уведомлением в телеграм -->
+                            <button1 class="button-clik"
+                                onclick="подтвердитьЗаказ('Ліхтар з функцією Power Bank акумуляторний usb.', 1)">Замовити</button1>
+
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+
+                                function подтвердитьЗаказ(назва_товару, productId) {
+                                    var телефон = document.getElementById("phone" + productId).value; // Получаем значение из поля ввода телефона
+
+                                    if (!телефон) {
+                                        alert("Будь ласка, введіть ваш номер телефону перед замовленням.");
+                                        return;
+                                    }
+
+                                    var подтверждение = confirm("Ваш номер телефона: " + телефон + "\nПідтвердіть замовлення?");
+
+                                    if (подтверждение) {
+                                        отправитьЗаказ(назва_товару, телефон, productId);
+                                    } else {
+                                        alert("Замовлення відмінено.");
+                                    }
+                                }
+
+                                function отправитьЗаказ(назва_товару, телефон, productId) {
+                                    var кількість = prompt("Введіть кількість товару " + назва_товару + ":");
+                                    var телеграм_токен = '6460654314:AAH3c78FP7I5BN3qakyX4h7MQZf9t77Lo1Q'; // Замените на ваш токен бота
+                                    var телеграм_chat_id = '548571346'; // Замените на ваш chat_id
+
+                                    var тема = "Нове замовлення";
+                                    var тіло_повідомлення = "Замовлення товару: " + назва_товару + ". Кількість: " + кількість + ". Номер телефона: " + телефон;
+
+                                    var посилання = "https://api.telegram.org/bot" + телеграм_токен + "/sendMessage?chat_id=" + телеграм_chat_id + "&text=" + encodeURIComponent(тема + '\n' + тіло_повідомлення);
+
+                                    // Отправка запроса к API Telegram
+                                    fetch(посилання)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.ok) {
+                                                alert("Замовлення відправлено!");
+                                            } else {
+                                                alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Помилка:', error);
+                                            alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                        });
+                                }
+                            </script>
+                        </div>
+                        <!-- Telegram -->
+                        <!---------------------------------------------------------- 1 --------------------------------------------------------->
+                        <!---------------------------------------------------------- 2 --------------------------------------------------------->
+                        <div class="product">
+                            <h2 class="main-title">Дозатор для рідкого мила з підсвічуванням Soap Bright Nightlight
+                                Soap
+                                Dispenser 400 мл.</h2>
+                            <img src="img/main-block/02.jpg" alt="Фото товару 2">
+                            <div class="product-detalis product-details-2">
+                                <p>Чудова річ яка виконує не одну функцію, адже дозатор для мила є чудовим приладом
+                                    коли
+                                    не
+                                    має світла , він працює як
+                                    датчик руху , зайшовши в ванну кімнату він автоматично вмикається, тому це
+                                    геніальне
+                                    рішення для користувачів.</p>
+                                <p>Найгігієнічніший варіант – дозатор, керований сенсором.</p>
+                                <p>Характеристики:</p>
+                                <ul>
+                                    <li>Матеріал виготовлення: АВС пластик</li>
+                                    <li>Маса: 140 г</li>
+                                    <li>Об'єм дозатора: 0,4 л Підсвічування: є, 7 кольорів Живлення: 3 батарейки
+                                        типу
+                                        ААА
+                                    </li>
+                                    <li>Датчик руху: +</li>
+                                </ul>
+                            </div>
+                            <!-- product-details -->
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+                            </script>
+                            <!-- product-details -->
+
+                            <!-- Telegram -->
+
+                            <!-- Добавленная графа для ввода номера телефона -->
+                            <button class="button-details" onclick="toggleDetails(2)"><i
+                                    class="icon"></i>Детальніше</button>
+                            <label for="phone2">Ваш номер телефона:</label>
+                            <input type="tel" id="phone2" name="phone2" placeholder="Введіть номер телефона">
+
+                            <!-- Добавленный скрипт для заказа с уведомлением в телеграм -->
+                            <button2 class="button-clik"                                                        
+                                onclick="подтвердитьЗаказ('Дозатор для рідкого мила з підсвічуванням Soap Bright Nightlight Soap Dispenser 400 мл.', 2)">Замовити</button2>                                
+
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+
+                                function подтвердитьЗаказ(назва_товару, productId) {
+                                    var телефон = document.getElementById("phone" + productId).value; // Получаем значение из поля ввода телефона
+
+                                    if (!телефон) {
+                                        alert("Будь ласка, введіть ваш номер телефону перед замовленням.");
+                                        return;
+                                    }
+
+                                    var подтверждение = confirm("Ваш номер телефона: " + телефон + "\nПідтвердіть замовлення?");
+
+                                    if (подтверждение) {
+                                        отправитьЗаказ(назва_товару, телефон, productId);
+                                    } else {
+                                        alert("Замовлення відмінено.");
+                                    }
+                                }
+
+                                function отправитьЗаказ(назва_товару, телефон, productId) {
+                                    var кількість = prompt("Введіть кількість товару " + назва_товару + ":");
+                                    var телеграм_токен = '6460654314:AAH3c78FP7I5BN3qakyX4h7MQZf9t77Lo1Q'; // Замените на ваш токен бота
+                                    var телеграм_chat_id = '548571346'; // Замените на ваш chat_id
+
+                                    var тема = "Нове замовлення";
+                                    var тіло_повідомлення = "Замовлення товару: " + назва_товару + ". Кількість: " + кількість + ". Номер телефона: " + телефон;
+
+                                    var посилання = "https://api.telegram.org/bot" + телеграм_токен + "/sendMessage?chat_id=" + телеграм_chat_id + "&text=" + encodeURIComponent(тема + '\n' + тіло_повідомлення);
+
+                                    // Отправка запроса к API Telegram
+                                    fetch(посилання)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.ok) {
+                                                alert("Замовлення відправлено!");
+                                            } else {
+                                                alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Помилка:', error);
+                                            alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                        });
+                                }
+                            </script>
+                        </div>
+                        <!-- Telegram -->
+                        <!---------------------------------------------------------- 2 --------------------------------------------------------->
+                        <!---------------------------------------------------------- 3 --------------------------------------------------------->
+                        <div class="product">
+                            <h2 class="main-title">Помпа для води Automatice Water Dispenser з USB</h2>
+                            <img src="img/main-block/03.jpg" alt="Фото товару 3">
+                            <div class="product-detalis product-details-3">
+                                <p>Помпа для води Електрична на бутель автоматична з акумулятором Water
+                                    Dispenser призначена для розливу питної води з бутлів з горловиною 5,5 см.
+                                    Включається і
+                                    вимикається без зволікань при
+                                    натисканні на кнопку, Не переливаючись і не розбризкуючи воду через чашку.
+                                    Заряджається
+                                    через USB-зарядку.</p>
+                                <p>Якщо ви
+                                    шукаєте надійну і сучасну заміну застарілої ручній помпі, або вам потрібна
+                                    доступна
+                                    альтернатива дорогому
+                                    кулеру-автоматична помпа для води ZHA з акумулятором ідеальне рішення для
+                                    вас!</p>
+                                <p>Зарядки вистачає на 4-5 балонів з водою.</p>
+                            </div>
+                            <!-- product-details -->
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+                            </script>
+                            <!-- product-details -->
+
+                            <!-- Telegram -->
+
+                            <!-- Добавленная графа для ввода номера телефона -->
+                            <button class="button-details" onclick="toggleDetails(3)"><i
+                                    class="icon"></i>Детальніше</button>
+                            <label for="phone3">Ваш номер телефона:</label>
+                            <input type="tel" id="phone3" name="phone3" placeholder="Введіть номер телефона">
+
+                            <!-- Добавленный скрипт для заказа с уведомлением в телеграм -->
+                            <button3 class="button-clik"
+                                onclick="подтвердитьЗаказ('Помпа для води Automatice Water Dispenser з USB.', 3)">Замовити</button3>
+
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+
+                                function подтвердитьЗаказ(назва_товару, productId) {
+                                    var телефон = document.getElementById("phone" + productId).value; // Получаем значение из поля ввода телефона
+
+                                    if (!телефон) {
+                                        alert("Будь ласка, введіть ваш номер телефону перед замовленням.");
+                                        return;
+                                    }
+
+                                    var подтверждение = confirm("Ваш номер телефона: " + телефон + "\nПідтвердіть замовлення?");
+
+                                    if (подтверждение) {
+                                        отправитьЗаказ(назва_товару, телефон, productId);
+                                    } else {
+                                        alert("Замовлення відмінено.");
+                                    }
+                                }
+
+                                function отправитьЗаказ(назва_товару, телефон, productId) {
+                                    var кількість = prompt("Введіть кількість товару " + назва_товару + ":");
+                                    var телеграм_токен = '6460654314:AAH3c78FP7I5BN3qakyX4h7MQZf9t77Lo1Q'; // Замените на ваш токен бота
+                                    var телеграм_chat_id = '548571346'; // Замените на ваш chat_id
+
+                                    var тема = "Нове замовлення";
+                                    var тіло_повідомлення = "Замовлення товару: " + назва_товару + ". Кількість: " + кількість + ". Номер телефона: " + телефон;
+
+                                    var посилання = "https://api.telegram.org/bot" + телеграм_токен + "/sendMessage?chat_id=" + телеграм_chat_id + "&text=" + encodeURIComponent(тема + '\n' + тіло_повідомлення);
+
+                                    // Отправка запроса к API Telegram
+                                    fetch(посилання)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.ok) {
+                                                alert("Замовлення відправлено!");
+                                            } else {
+                                                alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Помилка:', error);
+                                            alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                        });
+                                }
+                            </script>
+                        </div>
+                        <!-- Telegram -->
+                        <!---------------------------------------------------------- 3 --------------------------------------------------------->
+                        <!---------------------------------------------------------- 4 --------------------------------------------------------->
+                        <div class="product">
+                            <h2 class="main-title">Машинка для видалення катишків Lint Remover YX-5880RX
+                            </h2>
+                            <img src="img/main-block/04.jpg" alt="Фото товару 4">
+                            <div class="product-detalis product-details-4">
+                                <p>Машинка + додатковий ніж у подарунок Якщо ваші улюблені речі поізносілісь
+                                    і втратили
+                                    охайний вигляд, машинка для видалення
+                                    катишков поверне їм первісну красу.</p>
+                                <p>Машинка для зняття катишков Lint Remover YX 5880 має
+                                    пластиковий корпус зі зручною
+                                    ручкою і невеликою головкою, оснащеної металевою сіточкою.</p>
+                                <p>Відмінністю даної моделі від
+                                    аналогів є робота від
+                                    електричної мережі.</p>
+                            </div>
+                            <!-- product-details -->
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+                            </script>
+                            <!-- product-details -->
+
+                            <!-- Telegram -->
+
+                            <!-- Добавленная графа для ввода номера телефона -->
+                            <button class="button-details" onclick="toggleDetails(4)"><i
+                                    class="icon"></i>Детальніше</button>
+                            <label for="phone4">Ваш номер телефона:</label>
+                            <input type="tel" id="phone4" name="phone4" placeholder="Введіть номер телефона">
+
+                            <!-- Добавленный скрипт для заказа с уведомлением в телеграм -->
+                            <button4 class="button-clik"
+                                onclick="подтвердитьЗаказ('Машинка для видалення катишків Lint Remover YX-5880RX.', 4)">Замовити</button4>
+
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+
+                                function подтвердитьЗаказ(назва_товару, productId) {
+                                    var телефон = document.getElementById("phone" + productId).value; // Получаем значение из поля ввода телефона
+
+                                    if (!телефон) {
+                                        alert("Будь ласка, введіть ваш номер телефону перед замовленням.");
+                                        return;
+                                    }
+
+                                    var подтверждение = confirm("Ваш номер телефона: " + телефон + "\nПідтвердіть замовлення?");
+
+                                    if (подтверждение) {
+                                        отправитьЗаказ(назва_товару, телефон, productId);
+                                    } else {
+                                        alert("Замовлення відмінено.");
+                                    }
+                                }
+
+                                function отправитьЗаказ(назва_товару, телефон, productId) {
+                                    var кількість = prompt("Введіть кількість товару " + назва_товару + ":");
+                                    var телеграм_токен = '6460654314:AAH3c78FP7I5BN3qakyX4h7MQZf9t77Lo1Q'; // Замените на ваш токен бота
+                                    var телеграм_chat_id = '548571346'; // Замените на ваш chat_id
+
+                                    var тема = "Нове замовлення";
+                                    var тіло_повідомлення = "Замовлення товару: " + назва_товару + ". Кількість: " + кількість + ". Номер телефона: " + телефон;
+
+                                    var посилання = "https://api.telegram.org/bot" + телеграм_токен + "/sendMessage?chat_id=" + телеграм_chat_id + "&text=" + encodeURIComponent(тема + '\n' + тіло_повідомлення);
+
+                                    // Отправка запроса к API Telegram
+                                    fetch(посилання)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.ok) {
+                                                alert("Замовлення відправлено!");
+                                            } else {
+                                                alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Помилка:', error);
+                                            alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                        });
+                                }
+                            </script>
+                        </div>
+                        <!-- Telegram -->
+                        <!---------------------------------------------------------- 4 --------------------------------------------------------->
+                        <!---------------------------------------------------------- 5 --------------------------------------------------------->
+                        <div class="product">
+                            <h2 class="main-title">Нічник куля проектор зоряне небо Star Master Dream
+                                QDP01</h2>
+                            <img src="img/main-block/05.jpg" alt="Фото товару 5">
+                            <div class="product-detalis product-details-5">
+                                <p>Круглий обертовий нічник-проектор зоряне небо Star Master прекрасний
+                                    подарунок для
+                                    вашої
+                                    дитини. Він освітить кімнату
+                                    вашого малюка прекрасними зірками і місяцем. Харчування світильника
+                                    можливо від usb
+                                    проводу або від чотирьох батарейок
+                                    типу ААА. Комплектується напівпрозорим матовим ковпаком, який
+                                    дозволяє створити
+                                    більш
+                                    приглушене затишне світіння.
+                                    Нічник має три кнопки управління, які відповідають трьом режимам
+                                    роботи (їх можна
+                                    поєднувати в будь-якій комбінації)!</p>
+
+                                <h4>Особливості:</h4>
+                                <ul>
+                                    <li>Досить яскрава проекція білого світла (білі зірки);</li>
+                                    <li>Режим RGB з
+                                        можливістю вибору одного або змінного
+                                        світіння червоного, синього і зеленого кольорів;</li>
+                                    <li>Обертання сфери.</li>
+                                </ul>
+                                <h4>Характеристики:</h4>
+                                <p>Створює рухомі проекції на стіни і
+                                    стеля.</p>
+                                <p>Джерело світла: 4 світлодіодних ламп.</p>
+                                <p>Режими роботи: 3 кнопки (обертання, білий
+                                    світ, різнокольорове світіння).</p>
+                                <p>Напруга: 5 Ст. Харчування: USB-кабель або 4 батарейки ААА (у комплект
+                                    не входять).
+                                </p>
+                            </div>
+                            <!-- product-details -->
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+                            </script>
+                            <!-- product-details -->
+
+                            <!-- Telegram -->
+
+                            <!-- Добавленная графа для ввода номера телефона -->
+                            <button class="button-details" onclick="toggleDetails(5)"><i
+                                    class="icon"></i>Детальніше</button>
+                            <label for="phone5">Ваш номер телефона:</label>
+                            <input type="tel" id="phone5" name="phone5" placeholder="Введіть номер телефона">
+
+                            <!-- Добавленный скрипт для заказа с уведомлением в телеграм -->
+                            <button5 class="button-clik"
+                                onclick="подтвердитьЗаказ('Нічник куля проектор зоряне небо Star Master Dream QDP01.', 5)">Замовити</button5>
+
+                            <script>
+                                function toggleDetails(productId) {
+                                    var details = document.querySelector('.product-details-' + productId);
+                                    details.style.maxHeight = details.style.maxHeight ? null : details.scrollHeight + "px";
+                                }
+
+                                function подтвердитьЗаказ(назва_товару, productId) {
+                                    var телефон = document.getElementById("phone" + productId).value; // Получаем значение из поля ввода телефона
+
+                                    if (!телефон) {
+                                        alert("Будь ласка, введіть ваш номер телефону перед замовленням.");
+                                        return;
+                                    }
+
+                                    var подтверждение = confirm("Ваш номер телефона: " + телефон + "\nПідтвердіть замовлення?");
+
+                                    if (подтверждение) {
+                                        отправитьЗаказ(назва_товару, телефон, productId);
+                                    } else {
+                                        alert("Замовлення відмінено.");
+                                    }
+                                }
+
+                                function отправитьЗаказ(назва_товару, телефон, productId) {
+                                    var кількість = prompt("Введіть кількість товару " + назва_товару + ":");
+                                    var телеграм_токен = '6460654314:AAH3c78FP7I5BN3qakyX4h7MQZf9t77Lo1Q'; // Замените на ваш токен бота
+                                    var телеграм_chat_id = '548571346'; // Замените на ваш chat_id
+
+                                    var тема = "Нове замовлення";
+                                    var тіло_повідомлення = "Замовлення товару: " + назва_товару + ". Кількість: " + кількість + ". Номер телефона: " + телефон;
+
+                                    var посилання = "https://api.telegram.org/bot" + телеграм_токен + "/sendMessage?chat_id=" + телеграм_chat_id + "&text=" + encodeURIComponent(тема + '\n' + тіло_повідомлення);
+
+                                    // Отправка запроса к API Telegram
+                                    fetch(посилання)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.ok) {
+                                                alert("Замовлення відправлено!");
+                                            } else {
+                                                alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Помилка:', error);
+                                            alert("Помилка при відправленні замовлення. Спробуйте пізніше.");
+                                        });
+                                }
+                            </script>
+                        </div>
+                        <!-- Telegram -->
+                        <!---------------------------------------------------------- 5 --------------------------------------------------------->
+
+            </section>
+        </page>
+        <footer class="footer">
+            <div class="footer__content">
+                <span>© Магазин низьких цін та якісних товарів.</span>
+                <span>Всі права захищені.</span>
+            </div>
+        </footer>
+        <script>
+            //  Функція для відображення випливаючого блоку
+            function showContactPopup() {
+                var popup = document.getElementById("contactPopup");
+                if (popup.style.display === "none" || popup.style.display === "") {
+                    popup.style.display = "block";
+                } else {
+                    popup.style.display = "none";
+                }
+            }
+        </script>
+    </div>    
+</body>
+
+</html>
